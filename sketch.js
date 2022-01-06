@@ -14,7 +14,7 @@ function setup() {
   //     rect(gridSize * i, (26 - i) * gridSize, cubeSize);
   // }
   snake = new Snake(gridSize * 13, gridSize * 20);
-  frameRate(8);
+  frameRate(14);
   appleX = floor(random(0, 26)) * gridSize;
   appleY = floor(random(0, 26)) * gridSize;
   textAlign(CENTER);

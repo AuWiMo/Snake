@@ -19,13 +19,25 @@ function Snake(startX, startY) {
     
   }
   
+  this.placeApple = function() {
+    appleX = floor(random(0, 26)) * gridSize;
+    appleY = floor(random(0, 26)) * gridSize;
+    for (let i = 0; i < this.tail.length; i++) {
+      if ((this.x == appleX && this.y == appleY) || (this.tail[i].x == appleX && this.tail[i].y == appleY)) {
+        this.placeApple();
+        console.log("success")
+      }
+    }
+  } 
+  
   this.eat = function(ax, ay) {
     if (appleX == this.x && appleY == this.y) {
-      appleX = floor(random(0, 26)) * gridSize;
-      appleY = floor(random(0, 26)) * gridSize;
+      this.placeApple();
       this.total++;
     }
   }
+  
+
   
   this.update = function() {
     if (this.total == this.tail.length) {
