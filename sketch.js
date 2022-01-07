@@ -7,16 +7,10 @@ var canvas;
 
 function setup() {
   canvas = createCanvas(430, 430);
-  canvas.position(200, 500)
+  canvas.position(600, 250);
   background(0);
-  // for(i = 0; i <= 26; i++) {
-  //     rect(gridSize * i, gridSize * i, cubeSize);
-  // }
-  // for(i = 0; i <= 26; i++) {
-  //     rect(gridSize * i, (26 - i) * gridSize, cubeSize);
-  // }
   snake = new Snake(gridSize * 13, gridSize * 20);
-  frameRate(10);
+  frameRate(9);
   appleX = floor(random(0, 26)) * gridSize;
   appleY = floor(random(0, 26)) * gridSize;
   textAlign(CENTER);
@@ -27,7 +21,7 @@ function setup() {
 }
 
 function draw() {
-  if(started) {
+  if (started) {
     snake.eat(appleX, appleY);
     if (!gameOver) {
       background(0);
@@ -41,6 +35,10 @@ function draw() {
       textStyle(BOLD);
       fill(75, 0, 0);
       text("GAME OVER!", gridSize * 13.5, gridSize * 14.5);
+      textSize(15);
+      textStyle(BOLD);
+      fill(75, 0, 0);
+      text("PRESS SPACE TO PLAY AGAIN", gridSize * 13.5, gridSize * 16);
     }
   }
 }
@@ -59,6 +57,8 @@ function keyPressed() {
   if (keyCode === DOWN_ARROW || keyCode === 83) {
     snake.speedChange(0, 1);
   }
+  if (gameOver == true && keyCode === 32) {
+    snake.reset(gridSize * 13, gridSize * 20);
+    gameOver = false;
+  }
 }
-
-

@@ -37,7 +37,14 @@ function Snake(startX, startY) {
     }
   }
   
-
+  this.reset = function(startX, startY) {
+    this.x = startX;
+    this.y = startY;
+    this.xSpeed = 0;
+    this.ySpeed = -1;
+    this.total = 0;
+    this.tail = [];
+  }
   
   this.update = function() {
     if (this.total == this.tail.length) {
