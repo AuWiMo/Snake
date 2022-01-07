@@ -3,9 +3,11 @@ let cubeSize = 14;
 let appleX, appleY;
 let gameOver;
 let started = false;
+var canvas;
 
 function setup() {
-  createCanvas(430, 430);
+  canvas = createCanvas(430, 430);
+  canvas.position(200, 500)
   background(0);
   // for(i = 0; i <= 26; i++) {
   //     rect(gridSize * i, gridSize * i, cubeSize);
@@ -14,7 +16,7 @@ function setup() {
   //     rect(gridSize * i, (26 - i) * gridSize, cubeSize);
   // }
   snake = new Snake(gridSize * 13, gridSize * 20);
-  frameRate(14);
+  frameRate(10);
   appleX = floor(random(0, 26)) * gridSize;
   appleY = floor(random(0, 26)) * gridSize;
   textAlign(CENTER);
