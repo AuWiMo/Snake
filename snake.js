@@ -65,6 +65,7 @@ function Snake(startX, startY) {
         this.death();
       }
     }
+    lookingForInput = true;
   }
   
   

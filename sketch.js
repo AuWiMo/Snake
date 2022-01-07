@@ -4,10 +4,11 @@ let appleX, appleY;
 let gameOver;
 let started = false;
 var canvas;
+let lookingForInput = true;
 
 function setup() {
   canvas = createCanvas(430, 430);
-  canvas.position(600, 250);
+  canvas.position(600, 125);
   background(0);
   snake = new Snake(gridSize * 13, gridSize * 20);
   frameRate(9);
@@ -45,20 +46,23 @@ function draw() {
 
 function keyPressed() {
   started = true;
-  if (keyCode === RIGHT_ARROW || keyCode === 68) {
-    snake.speedChange(1, 0);
+  if(lookingForInput) {
+    if (keyCode === RIGHT_ARROW || keyCode === 68) {
+      snake.speedChange(1, 0);
+    }
+    if (keyCode === LEFT_ARROW || keyCode === 65) {
+      snake.speedChange(-1, 0);
+    }
+    if (keyCode === UP_ARROW || keyCode === 87) {
+      snake.speedChange(0, -1);
+    }
+    if (keyCode === DOWN_ARROW || keyCode === 83) {
+      snake.speedChange(0, 1);
+    }
+    if (gameOver == true && keyCode === 32) {
+      snake.reset(gridSize * 13, gridSize * 20);
+      gameOver = false;
+    }
   }
-  if (keyCode === LEFT_ARROW || keyCode === 65) {
-    snake.speedChange(-1, 0);
-  }
-  if (keyCode === UP_ARROW || keyCode === 87) {
-    snake.speedChange(0, -1);
-  }
-  if (keyCode === DOWN_ARROW || keyCode === 83) {
-    snake.speedChange(0, 1);
-  }
-  if (gameOver == true && keyCode === 32) {
-    snake.reset(gridSize * 13, gridSize * 20);
-    gameOver = false;
-  }
+  lookingForInput = false;
 }
