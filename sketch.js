@@ -59,10 +59,10 @@ function keyPressed() {
     if (keyCode === DOWN_ARROW || keyCode === 83) {
       snake.speedChange(0, 1);
     }
-    if (gameOver == true && keyCode === 32) {
-      snake.reset(gridSize * 13, gridSize * 20);
-      gameOver = false;
-    }
+  }
+  if (gameOver == true && keyCode === 32) {
+    snake.reset(gridSize * 13, gridSize * 20);
+    gameOver = false;
   }
   lookingForInput = false;
 }
